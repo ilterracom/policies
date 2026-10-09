@@ -1,0 +1,46 @@
+---
+layout: default
+---
+{% assign docs = site.pages | where: "product", page.product_id | where: "layout", "document" | sort: "order" %}
+{% assign external_count = page.external_documents | size %}
+{% assign document_count = docs.size | plus: external_count %}
+<div class="container page-shell">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Document library</a><span aria-hidden="true">/</span><span aria-current="page">{{ page.title | escape }}</span></nav>
+  <header class="product-hero">
+    <div>
+      <span class="eyebrow">ILTERRA / PRODUCT DOCUMENTS</span>
+      <h1>{{ page.title | escape }}<span class="red-period">.</span></h1>
+      <p>{{ page.description | escape }}</p>
+      {% if page.platforms %}<ul class="platform-list" aria-label="Platforms">{% for platform in page.platforms %}<li>{{ platform | escape }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+    {% if page.icon %}<img class="product-hero-icon" src="{{ page.icon | relative_url }}" alt="" aria-hidden="true" width="196" height="196">{% else %}<span class="product-hero-initial" aria-hidden="true">{{ page.title | slice: 0, 1 | upcase }}</span>{% endif %}
+  </header>
+
+  <section class="document-section" aria-labelledby="documents-title">
+    <div class="section-heading section-heading-small"><div><span class="eyebrow">DOCUMENTS / 01</span><h2 id="documents-title">Policies & agreements<span class="red-period">.</span></h2></div><span class="document-total">{{ document_count }} {% if document_count == 1 %}document{% else %}documents{% endif %}</span></div>
+    {% if document_count > 0 %}
+      <div class="document-list">
+        {% for doc in docs %}
+          <a class="document-row" href="{{ doc.url | relative_url }}">
+            <span class="document-row-icon" aria-hidden="true">§</span>
+            <span class="document-row-copy"><strong>{{ doc.title | escape }}</strong>{% if doc.summary %}<span>{{ doc.summary | escape }}</span>{% endif %}</span>
+            <span class="document-row-meta">READ DOCUMENT</span>
+            <span class="row-arrow" aria-hidden="true">↗</span>
+          </a>
+        {% endfor %}
+        {% for external in page.external_documents %}
+          <a class="document-row" href="{{ external.url | escape }}" target="_blank" rel="noopener noreferrer">
+            <span class="document-row-icon" aria-hidden="true">§</span>
+            <span class="document-row-copy"><strong>{{ external.title | escape }}</strong><span>{{ external.summary | escape }}</span></span>
+            <span class="document-row-meta">ON ILTERRA.COM</span>
+            <span class="row-arrow" aria-hidden="true">↗</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state compact"><div><h3>Documents are being prepared.</h3><p>Published policies and agreements will appear here.</p></div></div>
+    {% endif %}
+  </section>
+
+  <p class="release-history"><a href="{{ site.repository_url }}/commits/release/{{ page.product_id | escape }}">View this product's document history on GitHub <span aria-hidden="true">↗</span></a></p>
+</div>

@@ -1,0 +1,97 @@
+---
+layout: default
+---
+{% assign products = site.pages | where: "layout", "product" | sort: "order" %}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow eyebrow-on-dark"><span class="eyebrow-line" aria-hidden="true"></span> ILTERRA / DOCUMENT LIBRARY</span>
+      <h1 id="hero-title">Clear policies.<br><span>One official place.</span></h1>
+      <p>Privacy policies, terms and public documents for products built by ILTERRA. A clear starting point for the information that applies to your product.</p>
+      <a class="button button-light" href="#products">Explore product documents <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="art-number">01</div>
+      <div class="art-card art-card-back"></div>
+      <div class="art-card art-card-front">
+        <div class="art-card-top"><span>ILTERRA</span><span>LEGAL / 01</span></div>
+        <div class="art-card-rule"></div>
+        <div class="art-card-title">Privacy<br>policy<span>.</span></div>
+        <div class="art-card-lines"><i></i><i></i><i></i><i></i></div>
+        <div class="art-card-foot"><span>PRODUCT DOCUMENT</span><span>↗</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="value-strip">
+  <div class="container value-grid">
+    <div><span>01 / SOURCE</span><strong>Published by ILTERRA</strong></div>
+    <div><span>02 / ACCESS</span><strong>Open to everyone</strong></div>
+    <div><span>03 / RECORD</span><strong>Documents by product</strong></div>
+  </div>
+</div>
+
+<section class="products-section section-space" id="products" aria-labelledby="products-title">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">THE LIBRARY / 01</span>
+        <h2 id="products-title">Product documents<span class="red-period">.</span></h2>
+      </div>
+      <p>Explore public policies and agreements for individual ILTERRA products.</p>
+    </div>
+    {% if products.size > 0 %}
+      <div class="product-grid">
+        {% for product in products %}
+          {% assign product_docs = site.pages | where: "product", product.product_id | where: "layout", "document" %}
+          {% assign external_count = product.external_documents | size %}
+          {% assign document_count = product_docs.size | plus: external_count %}
+          <a class="product-card" href="{{ product.url | relative_url }}">
+            <span class="product-card-head"><span class="card-index">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+            {% if product.icon %}<span class="product-monogram product-icon"><img src="{{ product.icon | relative_url }}" alt="" loading="lazy" width="65" height="65"></span>{% else %}<span class="product-monogram" aria-hidden="true">{{ product.title | slice: 0, 1 | upcase }}</span>{% endif %}
+            <span class="product-card-copy"><strong>{{ product.title | escape }}</strong><span>{{ product.description | escape }}</span></span>
+            <span class="product-card-bottom"><span>{{ document_count }} {% if document_count == 1 %}document{% else %}documents{% endif %}</span><span>View documents <span aria-hidden="true">→</span></span></span>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state"><span class="empty-symbol" aria-hidden="true">/</span><div><h3>Product documents are being prepared.</h3><p>This library will grow as ILTERRA publishes new policies and agreements.</p></div></div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="company-docs-section section-space" id="company" aria-labelledby="company-title">
+  <div class="container">
+    <div class="section-heading"><div><span class="eyebrow">COMPANY DOCUMENTS / 02</span><h2 id="company-title">Company-wide policies<span class="red-period">.</span></h2></div><p>Public documents concerning ILTERRA services and the company website.</p></div>
+    <div class="company-doc-list">
+      <a href="{{ '/company/privacy/' | relative_url }}"><span>01</span><strong>Privacy & Cookies Policy</strong><small>READ DOCUMENT</small><span class="company-arrow" aria-hidden="true">↗</span></a>
+      <a href="{{ '/company/service/' | relative_url }}"><span>02</span><strong>Service Policy / Terms & Conditions</strong><small>READ DOCUMENT</small><span class="company-arrow" aria-hidden="true">↗</span></a>
+      <a href="{{ '/company/payment/' | relative_url }}"><span>03</span><strong>Payment Policy</strong><small>READ DOCUMENT</small><span class="company-arrow" aria-hidden="true">↗</span></a>
+      <a href="{{ '/company/provider/' | relative_url }}"><span>04</span><strong>Provider Information</strong><small>READ DOCUMENT</small><span class="company-arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="about-section section-space" id="about" aria-labelledby="about-title">
+  <div class="container about-grid">
+    <div class="about-heading">
+      <span class="eyebrow">ABOUT THIS LIBRARY / 03</span>
+      <h2 id="about-title">Information you can <em>return to.</em></h2>
+    </div>
+    <div class="about-content">
+      <p class="about-lead">This is the official home for public documents related to ILTERRA products. Each product has a dedicated place for its policies, agreements and future revisions.</p>
+      <div class="about-facts">
+        <div><span>01</span><h3>Direct links</h3><p>Product pages and published documents have stable addresses for use in apps and stores.</p></div>
+        <div><span>02</span><h3>Public history</h3><p>Each document links to its GitHub history, so you can review changes published from the release branch.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" aria-labelledby="contact-title">
+  <div class="container contact-inner">
+    <div><span class="eyebrow">QUESTIONS / 04</span><h2 id="contact-title">Need to get in touch?</h2><p>For questions about an ILTERRA product or its published documents, contact the team directly.</p></div>
+    <a class="button button-outline" href="mailto:info@ilterra.com">info@ilterra.com <span aria-hidden="true">↗</span></a>
+  </div>
+</section>

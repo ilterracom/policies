@@ -1,0 +1,17 @@
+title: "ILTERRA | Legal & Policies"
+description: "The official policy and legal document library for ILTERRA products."
+lang: en
+url: "https://policies.ilterra.com"
+# A custom domain serves this site from its root. Keep this empty while using policies.ilterra.com.
+baseurl: ""
+repository_url: "https://github.com/ilterracom/policies"
+
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - README.md
+  - _templates
+  - scripts
+  - .github
+  - .gitignore

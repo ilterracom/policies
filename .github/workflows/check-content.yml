@@ -1,0 +1,18 @@
+name: Check content
+
+on:
+  pull_request:
+    branches: [release]
+  push:
+    branches: [release]
+
+jobs:
+  content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Validate pages and metadata
+        run: ruby scripts/check_content.rb

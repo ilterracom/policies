@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{% assign product_pages = site.pages | where: "layout", "product" %}
+{% assign product_page = product_pages | where: "product_id", page.product | first %}
+{% assign product_docs = site.pages | where: "product", page.product | where: "layout", "document" | sort: "order" %}
+<div class="container page-shell legal-shell">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Document library</a><span aria-hidden="true">/</span>{% if product_page %}<a href="{{ product_page.url | relative_url }}">{{ product_page.title | escape }}</a><span aria-hidden="true">/</span>{% elsif page.product == "company" %}<a href="{{ '/#company' | relative_url }}">Company policies</a><span aria-hidden="true">/</span>{% endif %}<span aria-current="page">{{ page.title | escape }}</span></nav>
+  <div class="legal-grid{% unless product_page %} legal-grid-wide{% endunless %}">
+    <article class="legal-article">
+      <header class="document-intro">
+        <span class="eyebrow">OFFICIAL DOCUMENT / {{ page.product | upcase | escape }}</span>
+        <h1>{{ page.title | escape }}<span class="red-period">.</span></h1>
+        {% if product_page %}<p class="document-product">{{ product_page.title | escape }}</p>{% endif %}
+        <p class="document-history"><a href="{{ site.repository_url }}/commits/release/{{ page.path | escape }}">View changes in GitHub history <span aria-hidden="true">↗</span></a></p>
+        {% if page.source_url %}<p class="source-reference">Text from <a href="{{ page.source_url | escape }}">the policy published on ilterra.com</a>.{% if page.english_excerpt %} This page reproduces its English section; the source also contains a Russian translation.{% endif %}</p>{% endif %}
+      </header>
+      <div class="prose">{{ content }}</div>
+      {% if product_page %}<div class="back-link"><a href="{{ product_page.url | relative_url }}">← All {{ product_page.title | escape }} documents</a></div>{% elsif page.product == "company" %}<div class="back-link"><a href="{{ '/#company' | relative_url }}">← All company policies</a></div>{% endif %}
+    </article>
+    {% if product_page %}
+      <aside class="document-sidebar" aria-label="More product documents">
+        <div class="sidebar-card"><span class="eyebrow">{{ product_page.title | upcase | escape }}</span><h2>Documents</h2><ul>{% for doc in product_docs %}<li><a {% if doc.url == page.url %}aria-current="page"{% endif %} href="{{ doc.url | relative_url }}">{{ doc.title | escape }}</a></li>{% endfor %}</ul><a class="sidebar-all" href="{{ product_page.url | relative_url }}">View product page →</a></div>
+      </aside>
+    {% endif %}
+  </div>
+</div>
