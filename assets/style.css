@@ -115,6 +115,16 @@ img { max-width: 100%; }
 .company-doc-list small { color: #817d7c; font-size: 10px; font-weight: 850; letter-spacing: .08em; text-align: right; }
 .company-doc-list .company-arrow { color: var(--red); font-size: 23px; }
 
+.brand-assets-section { border-top: 1px solid #e2dfdd; background: #faf9f7; }
+.brand-asset-card { display: grid; grid-template-columns: minmax(260px, 360px) minmax(0, 1fr); gap: clamp(35px, 6vw, 90px); align-items: center; padding: clamp(22px, 4vw, 48px); border: 1px solid #e2e0df; background: #fff; }
+.brand-asset-preview { display: grid; place-items: center; min-height: 320px; border: 1px solid #ece7e5; background-color: #f6f3f2; background-image: linear-gradient(45deg, #ebe6e4 25%, transparent 25%), linear-gradient(-45deg, #ebe6e4 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ebe6e4 75%), linear-gradient(-45deg, transparent 75%, #ebe6e4 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0; }
+.brand-asset-preview img { display: block; width: min(72%, 224px); height: auto; }
+.brand-asset-copy h3 { margin: 15px 0 12px; font-size: clamp(30px, 3vw, 42px); letter-spacing: -.05em; }
+.brand-asset-copy > p { max-width: 520px; margin: 0 0 27px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.brand-asset-url-label { display: block; margin: 28px 0 8px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.brand-asset-url { color: var(--red-deep); font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+.brand-asset-url:hover { color: var(--red); }
+
 .about-section { border-top: 1px solid #e0deda; background: #eceae7; }
 .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(50px, 7vw, 110px); }
 .about-heading h2 { max-width: 450px; margin: 20px 0 0; font-size: clamp(37px, 4vw, 56px); font-weight: 750; line-height: 1.1; letter-spacing: -.058em; }
@@ -234,6 +244,8 @@ img { max-width: 100%; }
   .section-space { padding: 75px 0 84px; }
   .section-heading { align-items: start; flex-direction: column; gap: 14px; }
   .product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .brand-asset-card { grid-template-columns: 1fr; gap: 28px; }
+  .brand-asset-preview { min-height: 270px; }
   .about-grid, .legal-grid { grid-template-columns: 1fr; }
   .about-grid { gap: 35px; }
   .document-sidebar { position: static; }

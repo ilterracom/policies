@@ -62,7 +62,8 @@ PAGES.each do |path|
     if data["icon"]
       icon = data["icon"].to_s
       expected = %r{\A/assets/products/#{Regexp.escape(id.to_s)}/icon\.(?:jpg|png|webp|svg)\z}
-      errors << "#{relative}: icon must be /assets/products/#{id}/icon.jpg, .png, .webp or .svg" unless icon.match?(expected)
+      shared_brand_icon = id == "ilterra-token" && icon == "/assets/brand/ilterra_coin.png"
+      errors << "#{relative}: icon must be /assets/products/#{id}/icon.jpg, .png, .webp or .svg (or the ILTERRA Token brand icon)" unless icon.match?(expected) || shared_brand_icon
       errors << "#{relative}: icon file does not exist" unless File.file?(File.join(ROOT, icon.delete_prefix("/")))
     end
     products[id] = relative unless id.to_s.empty?

@@ -4,7 +4,7 @@ The official, English-only document library for ILTERRA products. GitHub Pages b
 
 ## Published documents
 
-The repository contains Markdown policies for 11 products, plus company-wide policies and provider information. The FinCast Privacy Policy, Terms of Use and Payment Policy are based on documents supplied from `fincast_server/docs/legal/`; the newer Privacy Policy supersedes the older FinCast text previously imported from ilterra.com. FinCast currently has no direct checkout, so its Payment Policy describes App Store billing and requires a separate update before direct sales begin.
+The repository contains Markdown policies and documentation for 12 products, plus company-wide policies and provider information. ILTERRA Token has a public Overview and Token Information page; its proposed economic, governance, benefit, registry, legal and whitepaper terms are still under development and are not published. The FinCast Privacy Policy, Terms of Use and Payment Policy are based on documents supplied from `fincast_server/docs/legal/`; the newer Privacy Policy supersedes the older FinCast text previously imported from ilterra.com. FinCast currently has no direct checkout, so its Payment Policy describes App Store billing and requires a separate update before direct sales begin.
 
 Other imported documents are based on their source pages on ilterra.com and link to those pages. The public copies identify the operator by the ILTERRA trading name. Some original texts include their own historical dates; these are part of the imported legal text, not portal metadata. The SkyReg and StealthSafe source pages are bilingual, so their Markdown copies contain the English sections only. The Simetria copy omits a Russian alternate app name. Imported documents do not automatically stay in sync with ilterra.com.
 
@@ -20,7 +20,8 @@ Keep work on other branches and merge reviewed changes into `release`. A public 
 index.md                    Home page
 _layouts/                   Home, product and document layouts
 assets/products/            Product icons by product slug
-assets/                     Stylesheet and ILTERRA logo
+assets/brand/               Public ILTERRA coin logo
+assets/                     Stylesheet, favicon and header logo
 _templates/product/         Examples excluded from the public site
 company/*.md                Company-wide policies
 company/provider.md         Operator and contact details linked from product documents
@@ -31,6 +32,10 @@ company/provider.md         Operator and contact details linked from product doc
 ```
 
 The catalog discovers pages with `layout: product`. A product page discovers documents with the matching `product` field and `layout: document`.
+
+## Public token logo
+
+The official ILTERRA Token image is a transparent 256 × 256 PNG at [https://policies.ilterra.com/assets/brand/ilterra_coin.png](https://policies.ilterra.com/assets/brand/ilterra_coin.png). The homepage displays it in Brand assets, and the ILTERRA Token product card uses the same file. Keep this URL stable because token metadata and external services may reference it. The token must still be verified by its full Jetton master address; names and images can be copied.
 
 ## Add a product
 
