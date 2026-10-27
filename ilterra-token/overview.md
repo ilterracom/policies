@@ -32,6 +32,8 @@ The full Jetton master address, technical characteristics and verification links
 
 Any future benefit or right will require its own approved, published terms. Plans may change or may not be implemented.
 
+The current planning documents are [Tokenomics & Allocation](/ilterra-token/tokenomics-allocation/), [Governance Policy](/ilterra-token/governance-policy/), [Loyalty & Discount Policy](/ilterra-token/loyalty-discount-policy/) and the [Product & Asset Registry](/ilterra-token/product-asset-registry/). Read the [Token Terms & Risk Disclosure](/ilterra-token/token-terms-risk-disclosure/) for present limits and risks, or the [Whitepaper](/ilterra-token/whitepaper/) for a consolidated project description. Publication of a plan does not itself activate it.
+
 ## Important notice
 
 This page describes the token and the project's present intentions. It is not a sale offer, investment advice, or a promise of profit, future token value, discounts or liquidity. Blockchain transactions can be irreversible, and digital assets carry technical, custody and market risks. Read the [Token Information](/ilterra-token/token-information/) page and verify the contract address before interacting with a token identified as ILTERRA or ILT.
